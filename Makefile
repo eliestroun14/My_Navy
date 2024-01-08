@@ -5,9 +5,9 @@
 ## Makefile
 ##
 
-NAME		=
+NAME		= my_navy
 
-SRCS		=
+SRCS		= src/main.c
 
 OBJS     = $(SRCS:.c=.o)
 
