@@ -7,7 +7,11 @@
 
 NAME		= my_navy
 
-SRCS		= src/main.c
+SRCS		= src/main.c \
+			  src/innit_free/free_all.c \
+			  src/innit_free/innit.c \
+			  src/get_info/get_info.c \
+			  src/get_info/fill_struct.c
 
 OBJS     = $(SRCS:.c=.o)
 
