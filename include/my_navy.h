@@ -33,6 +33,6 @@ int free_tab(char **tab);
 //get info
 int get_info(char *filepath, navy_t **tab);
 int fill_struct(char **individual_info, navy_t *tab);
-int get_map(char **map, navy_t **tab);
+int get_map(navy_t **tab, char **map);
 
 #endif /* !MY_NAVY_H_ */
