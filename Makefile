@@ -5,9 +5,11 @@
 ## Makefile
 ##
 
-NAME		= my_navy
+NAME		= bootstrap_my_navy
 
-SRCS		= src/main.c
+SRCS		= bootstrap/main.c
+SRCS		+= bootstrap/process_info.c
+SRCS		+= bootstrap/kill_it.c
 
 OBJS     = $(SRCS:.c=.o)
 
