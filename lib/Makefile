@@ -111,6 +111,12 @@ TEST_OBJ =	$(TEST_SRC:.c=.o)
 
 TEST_NAME = unit_test
 
+	GREEN=\033[1;32m
+	YELLOW=\033[1;93m
+	GREY=\033[2;49m
+	ITALIC=\033[3m
+	NC=\033[0m
+
 all: $(LIB)
 .PHONY:all
 
@@ -129,6 +135,11 @@ clean:
 fclean: clean
 	$(RM) -f $(LIB_NAME)
 .PHONY:fclean
+
+.c.o:
+	@ $(CC) -o $(subst .c,.o,$<) -c $< $(CFLAGS) \
+		&& echo -e "[ ${GREEN}OK${NC} ] ${GREY}$<${NC}" \
+		|| echo -e "[ ${YELLOW}KO${NC} ] ${ITALIC}$<${NC}"
 
 re: fclean all
 .PHONY:re
