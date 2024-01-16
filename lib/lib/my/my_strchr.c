@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-char *my_strrchr(const char *str, int ch)
+char *my_strchr(char *str, int ch)
 {
     const char *last_occurrence = NULL;
 
