@@ -75,7 +75,7 @@ static int check_between_2_5(char *info, navy_t *ship)
     return 84;
 }
 
-int get_info(char *filepath, navy_t **tab)
+int get_info(char const *filepath, navy_t **tab)
 {
     char *arg = open_file(filepath);
     char **info = my_str_to_word_array(arg, "\n");

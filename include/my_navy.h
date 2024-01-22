@@ -7,6 +7,7 @@
 
 #ifndef MY_NAVY_H_
     #define MY_NAVY_H_
+    #include <signal.h>
 
 typedef struct pos_s {
     int x;
@@ -24,6 +25,32 @@ typedef struct navy_s {
     data_t *data;
 } navy_t;
 
+typedef struct global_value_s {
+    unsigned char signal_value;
+    char count;
+    int pid;
+} global_value_t;
+
+typedef enum SIGNAL_s {
+    ONE = 1,
+    TWO = 2,
+    THREE = 3,
+    FOUR = 4,
+    FIVE = 5,
+    SIX = 6,
+    SEVEN = 7,
+    EIGHT = 8,
+    P2_CONECTED = 9,
+    P1_READY = 10,
+    PLAY = 11,
+    HIT = 12,
+    MISS = 13,
+    WIN = 14,
+    LOSE = 15
+} SIGNAL_e;
+
+static global_value_t global;
+
 //innit and free
 navy_t **innit_tab(void);
 char **innit_map(void);
@@ -31,8 +58,17 @@ int free_all(navy_t **tab, char **map);
 int free_tab(char **tab);
 
 //get info
-int get_info(char *filepath, navy_t **tab);
+int get_info(char const *filepath, navy_t **tab);
 int fill_struct(char **individual_info, navy_t *tab);
 int get_map(navy_t **tab, char **map);
 
+//signal handler
+void signal_handler(int sig, siginfo_t *siginfo, void *panic);
+int send_signal(SIGNAL_e signal, int pid);
+
+// handle players
+int player_1(char **map);
+
+// utiles
+int get_line(void);
 #endif /* !MY_NAVY_H_ */
