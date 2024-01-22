@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
 
 pos_t play(void)
 {
@@ -62,7 +63,7 @@ int handle_coords(void)
     return 0;
 }
 
-int game(void)
+int game(char *map)
 {
     pos_t coords;
 
@@ -90,7 +91,7 @@ int player_1(char **map)
         global.count = 0;
         global.signal_value = 0;
         send_signal(P1_READY, global.pid);
-        game();
+        game(map);
     }
     return 0;
 }
