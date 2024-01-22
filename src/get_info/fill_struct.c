@@ -18,4 +18,5 @@ int fill_struct(char **individual_info, navy_t *ship)
     ship->data->pos_start->y = individual_info[1][1] - 48 - 1;
     ship->data->pos_end->x = individual_info[2][0] - 65;
     ship->data->pos_end->y = individual_info[2][1] - 48 - 1;
+    return 0;
 }

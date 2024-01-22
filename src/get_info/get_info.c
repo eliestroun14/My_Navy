@@ -6,24 +6,44 @@
 */
 #include "my_navy.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "my.h"
+#include <string.h>
 
-static char *open_file(char *filepath)
+static char *condition(int file, char *content, int *contentSize)
 {
-    int fd = open(filepath, O_RDONLY);
-    struct stat filestat;
-    char *buff = NULL;
+    char buffer[4096];
+    char *temp = NULL;
+    int bytesread = read(file, buffer, sizeof(buffer));
 
-    if (stat(filepath, &filestat) == -1)
-        return NULL;
-    buff = malloc(sizeof(char) * (filestat.st_size + 1));
-    read(fd, buff, filestat.st_size);
-    close(fd);
-    buff[filestat.st_size] = '\0';
-    return buff;
+    while (bytesread > 0) {
+        temp = malloc(*contentSize + bytesread + 1);
+        if (content) {
+            memcpy(temp, content, *contentSize);
+            free(content);
+        }
+        content = temp;
+        memcpy(content + *contentSize, buffer, bytesread);
+        *contentSize += bytesread;
+        bytesread = read(file, buffer, sizeof(buffer));
+    }
+    return content;
+}
+
+static char *open_file(const char *filename)
+{
+    int file = open(filename, O_RDONLY);
+    char *content = NULL;
+    int contentSize = 0;
+
+    content = condition(file, content, &contentSize);
+    close(file);
+    if (content)
+        content[contentSize] = '\0';
+    return content;
 }
 
 static int is_enought_arg(char **info)
@@ -37,7 +57,7 @@ static int is_enought_arg(char **info)
 
 static int check_between_2_5(char *info, navy_t *ship)
 {
-    char **individual_info = my_str_to_word_array(info, ':');
+    char **individual_info = my_str_to_word_array(info, ":");
 
     if (individual_info == NULL)
         return 0;
@@ -58,7 +78,7 @@ static int check_between_2_5(char *info, navy_t *ship)
 int get_info(char *filepath, navy_t **tab)
 {
     char *arg = open_file(filepath);
-    char **info = my_str_to_word_array(arg, '\n');
+    char **info = my_str_to_word_array(arg, "\n");
 
     if (is_enought_arg(info) != 4)
         return 84;

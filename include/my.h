@@ -75,9 +75,9 @@ int my_showmem(char const *str, int size);
 char *my_strcat(char *dest, char const *src);
 char *my_strncat(char *dest, char const *src, int nb);
 //char **my_str_to_word_array(char const *str);
-char **my_str_to_word_array(char const *str, char ch);
+char **my_str_to_word_array(char const *str, char *ch);
 int my_show_word_array(char const **tab);
-char *my_strrchr(const char *str, int ch);
+char *my_strchr(const char *str, int ch);
 char *my_strdup(const char *src);
 #endif
 
