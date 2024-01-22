@@ -13,7 +13,7 @@
 
 int print_dash_h(void)
 {
-    my_printf("USAGE :\n ./cmd [file] for player 1\n ./cmd [signal] [file] for\
+    my_putstr("USAGE :\n ./cmd [file] for player 1\n ./cmd [signal] [file] for\
 player 2\n");
     return 0;
 }
@@ -35,7 +35,7 @@ int main(int argc, char const **argv)
     char **map = innit_map();
 
     if (argc < 2 || argc > 3) {
-        my_printf("invalid number of parameter,\ntry ./[binary] -h\n");
+        my_putstr("invalid number of parameter,\ntry ./[binary] -h\n");
         return 84;
     }
     if (argc == 2 && !my_strcmp(argv[1], "-h"))

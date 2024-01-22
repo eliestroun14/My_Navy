@@ -70,5 +70,5 @@ int send_signal(SIGNAL_e signal, int pid);
 int player_1(char **map);
 
 // utiles
-int get_line(void);
+pos_t get_line(void);
 #endif /* !MY_NAVY_H_ */
