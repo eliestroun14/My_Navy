@@ -34,6 +34,5 @@ int free_tab(char **tab);
 int get_info(char *filepath, navy_t **tab);
 int fill_struct(char **individual_info, navy_t *tab);
 int get_map(navy_t **tab, char **map);
-char *my_char_realloc(char *old_char, char caract_to_add);
 
 #endif /* !MY_NAVY_H_ */
