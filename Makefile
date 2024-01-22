@@ -12,7 +12,8 @@ SRCS		= src/main.c \
 			  src/innit_free/innit.c \
 			  src/get_info/get_info.c \
 			  src/get_info/fill_struct.c \
-			  src/get_info/get_map.c
+			  src/get_info/get_map.c \
+			  src/realloc/my_char_realloc.c
 
 OBJS     = $(SRCS:.c=.o)
 

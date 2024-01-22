@@ -19,9 +19,6 @@ int main(int argc, char **argv)
     if (get_info(argv[1], tab) == 84)
         return 84;
     get_map(tab, map);
-    for (int i = 0; map[i] != NULL; i++) {
-        printf("%s\n", map[i]);
-    }
     free_all(tab, map);
     return 0;
 }
