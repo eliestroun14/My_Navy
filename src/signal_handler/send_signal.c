@@ -16,6 +16,7 @@ int send_signal(SIGNAL_e signal, int pid)
     for (int i = 7; i >= 0; i--) {
         bit = (signal >> i) & 1;
         kill(pid, bit ? SIGUSR2 : SIGUSR1);
+        usleep(10000);
     }
     return signal;
 }

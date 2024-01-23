@@ -12,11 +12,12 @@ char **innit_map(void)
     char **map = malloc(sizeof(char *) * (8 + 1));
 
     for (int i = 0; i < 8; i++) {
-        map[i] = malloc(sizeof(char) * (8 + 1));
+        map[i] = malloc(sizeof(char) * (8 + 2));
         for (int j = 0; j < 8; j++) {
             map[i][j] = '.';
         }
-        map[i][8] = '\0';
+        map[i][8] = '\n';
+        map[i][9] = '\0';
     }
     map[8] = NULL;
     return map;

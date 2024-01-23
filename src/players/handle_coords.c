@@ -5,32 +5,44 @@
 ** handle_coords
 */
 #include "my_navy.h"
+#include "my.h"
+#include <stdio.h>
 
-int check_map(pos_t coords, char **map)
+int check_map(pos_t coords, char **map, char **map_enemy)
 {
-    if (map[coords.x][coords.y] != '.') {
-        map[coords.x][coords.y] = 'X';
+    my_printf("result: %c%d", (coords.x + 'A' - 1), coords.y);
+    if (map[coords.y - 1][coords.x - 1] != '.') {
+        map[coords.y - 1][coords.x - 1] = 'X';
+        my_putstr(":hit\n\n");
         send_signal(HIT, global.pid);
-    } else if (map[coords.x][coords.y] == '.') {
+    } else if (map[coords.y - 1][coords.x - 1] == '.') {
+        my_putstr(":missed\n\n");
         send_signal(MISS, global.pid);
     }
+    for (int i = 0; map[i] != NULL; i++)
+        my_putstr(map[i]);
+    my_putstr("\n\n");
+    for (int i = 0; map_enemy[i] != NULL; i++)
+        my_putstr(map_enemy[i]);
+    my_putstr("\n\n");
     return 0;
 }
 
-int handle_coords(char **map)
+int handle_coords(char **map, char **map_enemy)
 {
     pos_t coords_recieved;
 
-    if (global.count == 7 && global.signal_value < 9 &&
+    if (global.count == 8 && global.signal_value < 9 &&
     global.signal_value > 0) {
         coords_recieved.x = global.signal_value;
         global.signal_value = 0;
-        if (global.count == 15 && global.signal_value < 9 &&
+        while (global.count != 16);
+        if (global.count == 16 && global.signal_value < 9 &&
         global.signal_value > 0) {
             coords_recieved.y = global.signal_value;
             global.signal_value = 0;
             global.count = 0;
-            check_map(coords_recieved, map);
+            check_map(coords_recieved, map, map_enemy);
         }
     }
     return 0;

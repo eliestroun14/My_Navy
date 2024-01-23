@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include "my.h"
 
+global_value_t global;
+
 int print_dash_h(void)
 {
     my_putstr("USAGE :\n ./cmd [file] for player 1\n");
@@ -24,14 +26,13 @@ int init_map(char **map, navy_t **tab, char const *argv)
         return 84;
     get_map(tab, map);
     for (int i = 0; map[i] != NULL; i++) {
-        printf("%s\n", map[i]);
+        my_putstr(map[i]);
     }
     return 0;
 }
 
-int main(int argc, char const **argv)
+int my_navy(int argc, char const **argv, navy_t **tab)
 {
-    navy_t **tab = innit_tab();
     char **map_self = innit_map();
     char **map_enemy = innit_map();
 
@@ -50,5 +51,19 @@ int main(int argc, char const **argv)
         player_2(map_self, map_enemy, argv[1]);
     }
     free_all(tab, map_self);
+    return 0;
+}
+
+int main(int argc, char const **argv)
+{
+    struct sigaction act;
+    navy_t **tab = innit_tab();
+
+    act.sa_sigaction = signal_handler;
+    act.sa_flags = SA_SIGINFO;
+    if (sigaction(SIGUSR1, &act, NULL) < 0
+        || sigaction(SIGUSR2, &act, NULL) < 0)
+        return 84;
+    my_navy(argc, argv, tab);
     return 0;
 }

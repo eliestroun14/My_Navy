@@ -21,7 +21,8 @@ SRCS		= src/main.c \
 			  src/players/handle_coords.c \
 			  src/players/player_2.c \
 			  src/players/game.c \
-			  src/players/win_lose.c
+			  src/players/win_lose.c \
+			  src/signal_handler/signal_handler.c
 
 OBJS     = $(SRCS:.c=.o)
 

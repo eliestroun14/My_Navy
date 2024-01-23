@@ -5,15 +5,16 @@
 ** a
 */
 #include "my_navy.h"
+#include "my.h"
 
 int update_map(SIGNAL_e signal, pos_t coords, char **map)
 {
     my_putstr("result : ");
-    my_putchar((coords.x + 'A'));
+    my_putchar((coords.x + 'A' - 1));
     my_put_nbr(coords.y);
     if (signal == HIT) {
         my_putstr(":hit\n\n");
-        map[coords.x][coords.y] = 'o';
+        map[coords.y - 1][coords.x - 1] = 'o';
     } else if (signal == MISS) {
         my_putstr(":missed\n\n");
     }
@@ -24,7 +25,8 @@ int update_map(SIGNAL_e signal, pos_t coords, char **map)
 
 int miss_hit(pos_t *coords, char **map)
 {
-    if (global.count == 7 && global.signal_value == HIT) {
+    if (global.count == 8 &&
+    (global.signal_value == HIT || global.signal_value == MISS)) {
         update_map(global.signal_value, *coords, map);
         global.count = 0;
         global.signal_value = 0;

@@ -5,14 +5,15 @@
 ** game
 */
 #include "my_navy.h"
+#include "my.h"
 
 int game(char **map_self, char **map_enemy)
 {
     pos_t coords;
 
     while (1) {
-        coords = play();
-        handle_coords(map_self);
+        play(&coords);
+        handle_coords(map_self, map_enemy);
         miss_hit(&coords, map_enemy);
         win_lose();
     }

@@ -49,7 +49,7 @@ typedef enum SIGNAL_s {
     LOSE = 15
 } SIGNAL_e;
 
-static global_value_t global;
+extern global_value_t global;
 
 //innit and free
 navy_t **innit_tab(void);
@@ -65,14 +65,16 @@ int get_map(navy_t **tab, char **map);
 //signal handler
 void signal_handler(int sig, siginfo_t *siginfo, void *panic);
 int send_signal(SIGNAL_e signal, int pid);
-pos_t play(void);
+int play(pos_t *coords);
 int miss_hit(pos_t *coords, char **map);
-int handle_coords(char **map);
+int handle_coords(char **map, char **map_enemy);
 int game(char **map_self, char **map_enemy);
 int win_lose(void);
+
 // handle players
 int player_1(char **map_self, char **map_enemy);
 int player_2(char **map_self, char **map_enemy, char const *pid);
+
 // utiles
 pos_t get_line(void);
 #endif /* !MY_NAVY_H_ */
