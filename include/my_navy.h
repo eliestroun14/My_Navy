@@ -66,7 +66,7 @@ int get_map(navy_t **tab, char **map);
 //signal handler
 void signal_handler(int sig, siginfo_t *siginfo, void *panic);
 int send_signal(SIGNAL_e signal, int pid);
-int play(pos_t *coords);
+int play(pos_t *coords, char **map_self, char **map_enemy);
 int miss_hit(pos_t *coords, char **map);
 int handle_coords(char **map, char **map_enemy);
 int game(char **map_self, char **map_enemy);

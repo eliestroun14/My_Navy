@@ -13,7 +13,7 @@ int game(char **map_self, char **map_enemy)
 
     while (1) {
         win_lose(map_self, map_enemy);
-        play(&coords);
+        play(&coords, map_self, map_enemy);
         handle_coords(map_self, map_enemy);
         miss_hit(&coords, map_enemy);
     }
