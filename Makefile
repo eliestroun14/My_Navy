@@ -15,7 +15,11 @@ SRCS		= src/main.c \
 			  src/get_info/get_map.c \
 			  src/players/player_1.c \
 			  src/get_line/get_line.c \
-			  src/signal_handler/send_signal.c
+			  src/signal_handler/send_signal.c \
+			  src/players/play.c \
+			  src/players/miss_hit.c \
+			  src/players/handle_coords.c \
+			  src/players/player_2.c
 
 OBJS     = $(SRCS:.c=.o)
 

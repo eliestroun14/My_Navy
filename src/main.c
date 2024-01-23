@@ -32,7 +32,8 @@ int init_map(char **map, navy_t **tab, char const *argv)
 int main(int argc, char const **argv)
 {
     navy_t **tab = innit_tab();
-    char **map = innit_map();
+    char **map_self = innit_map();
+    char **map_enemy = innit_map();
 
     if (argc < 2 || argc > 3) {
         my_putstr("invalid number of parameter,\ntry ./[binary] -h\n");
@@ -41,13 +42,13 @@ int main(int argc, char const **argv)
     if (argc == 2 && !my_strcmp(argv[1], "-h"))
         return print_dash_h();
     if (argc == 2) {
-        init_map(map, tab, argv[1]);
-        player_1(map);
+        init_map(map_self, tab, argv[1]);
+        player_1(map_self, map_enemy);
     }
     if (argc == 3) {
-        init_map(map, tab, argv[2]);
-        //send_signal();
+        init_map(map_self, tab, argv[2]);
+        player_2(map_self, map_enemy, argv[1]);
     }
-    free_all(tab, map);
+    free_all(tab, map_self);
     return 0;
 }
