@@ -21,7 +21,7 @@ int handle_coords(char **map)
 {
     pos_t coords_recieved;
 
-    if (global.count == 7 && global.signal_value < 9 && 
+    if (global.count == 7 && global.signal_value < 9 &&
     global.signal_value > 0) {
         coords_recieved.x = global.signal_value;
         global.signal_value = 0;

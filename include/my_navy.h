@@ -72,7 +72,7 @@ int game(char **map_self, char **map_enemy);
 int win_lose(void);
 // handle players
 int player_1(char **map_self, char **map_enemy);
-int player_2(char **map_self, char **map_enemy, int pid);
+int player_2(char **map_self, char **map_enemy, char const *pid);
 // utiles
 pos_t get_line(void);
 #endif /* !MY_NAVY_H_ */

@@ -13,8 +13,8 @@
 
 int print_dash_h(void)
 {
-    my_putstr("USAGE :\n ./cmd [file] for player 1\n ./cmd [signal] [file] for\
-player 2\n");
+    my_putstr("USAGE :\n ./cmd [file] for player 1\n");
+    my_putstr(" ./cmd [signal] [file] for player 2\n");
     return 0;
 }
 

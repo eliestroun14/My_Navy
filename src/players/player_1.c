@@ -13,11 +13,11 @@
 
 int player_1(char **map_self, char **map_enemy)
 {
+    pid_t process_id = getpid();
+
     global.signal_value = 0;
     global.count = 0;
     global.pid = -1;
-    pid_t process_id = getpid();
-
     my_putstr("my_pid: ");
     my_put_nbr(process_id);
     my_putstr("\n\nwaiting for enemy connection...\n\n");
