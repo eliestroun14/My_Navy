@@ -19,12 +19,11 @@ int check_map(pos_t coords, char **map, char **map_enemy)
         my_putstr(":missed\n\n");
         send_signal(MISS, global.pid);
     }
-    for (int i = 0; map[i] != NULL; i++)
-        my_putstr(map[i]);
-    my_putstr("\n\n");
-    for (int i = 0; map_enemy[i] != NULL; i++)
-        my_putstr(map_enemy[i]);
-    my_putstr("\n\n");
+    if (!check_win_lose(map, map_enemy)) {
+        send_signal(WIN, global.pid);
+        return 0;
+    }
+    print_map(map, map_enemy);
     return 0;
 }
 

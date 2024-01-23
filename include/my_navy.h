@@ -69,7 +69,7 @@ int play(pos_t *coords);
 int miss_hit(pos_t *coords, char **map);
 int handle_coords(char **map, char **map_enemy);
 int game(char **map_self, char **map_enemy);
-int win_lose(void);
+int win_lose(char **map_self, char **map_enemy);
 
 // handle players
 int player_1(char **map_self, char **map_enemy);
@@ -77,4 +77,6 @@ int player_2(char **map_self, char **map_enemy, char const *pid);
 
 // utiles
 pos_t get_line(void);
+void print_map(char **map, char **map_enemy);
+int check_win_lose(char **map_self, char **map_enemy);
 #endif /* !MY_NAVY_H_ */

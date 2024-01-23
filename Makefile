@@ -22,7 +22,9 @@ SRCS		= src/main.c \
 			  src/players/player_2.c \
 			  src/players/game.c \
 			  src/players/win_lose.c \
-			  src/signal_handler/signal_handler.c
+			  src/signal_handler/signal_handler.c \
+			  src/map/print_map.c \
+			  src/map/check_win_lose.c
 
 OBJS     = $(SRCS:.c=.o)
 

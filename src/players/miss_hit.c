@@ -6,6 +6,7 @@
 */
 #include "my_navy.h"
 #include "my.h"
+#include <stddef.h>
 
 int update_map(SIGNAL_e signal, pos_t coords, char **map)
 {
@@ -14,8 +15,9 @@ int update_map(SIGNAL_e signal, pos_t coords, char **map)
     my_put_nbr(coords.y);
     if (signal == HIT) {
         my_putstr(":hit\n\n");
-        map[coords.y - 1][coords.x - 1] = 'o';
+        map[coords.y - 1][coords.x - 1] = 'x';
     } else if (signal == MISS) {
+        map[coords.y - 1][coords.x - 1] = 'o';
         my_putstr(":missed\n\n");
     }
     send_signal(PLAY, global.pid);
