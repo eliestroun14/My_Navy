@@ -23,7 +23,9 @@ int check_map(pos_t coords, char **map, char **map_enemy)
         send_signal(WIN, global.pid);
         return 0;
     }
-    print_map(map, map_enemy);
+    if (global.print_map)
+        print_map(map, map_enemy);
+    global.print_map = !global.print_map;
     return 0;
 }
 

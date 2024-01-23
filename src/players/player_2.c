@@ -16,6 +16,7 @@ int player_2(char **map_self, char **map_enemy, char const *pid)
     global.signal_value = 0;
     global.count = 0;
     global.pid = my_getnbr(pid);
+    global.print_map = true;
     my_printf("my_pid: %d\n\n", process_id);
     send_signal(P2_CONECTED, global.pid);
     while (1) {
