@@ -8,7 +8,6 @@
 #ifndef MY_NAVY_H_
     #define MY_NAVY_H_
     #include <signal.h>
-    #include <stdbool.h>
 
 typedef struct pos_s {
     int x;
@@ -30,7 +29,7 @@ typedef struct global_value_s {
     unsigned char signal_value;
     char count;
     int pid;
-    bool print_map;
+    char print_map;
 } global_value_t;
 
 typedef enum SIGNAL_s {

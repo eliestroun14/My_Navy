@@ -23,9 +23,11 @@ int check_map(pos_t coords, char **map, char **map_enemy)
         send_signal(WIN, global.pid);
         return 0;
     }
-    if (global.print_map)
+    global.print_map++;
+    if (global.print_map == 2) {
         print_map(map, map_enemy);
-    global.print_map = !global.print_map;
+        global.print_map = 0;
+    }
     return 0;
 }
 

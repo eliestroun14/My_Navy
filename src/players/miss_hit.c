@@ -34,6 +34,7 @@ int miss_hit(pos_t *coords, char **map)
         global.signal_value = 0;
         coords->x = 0;
         coords->y = 0;
+        global.print_map++;
     }
     return 0;
 }
