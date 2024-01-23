@@ -36,18 +36,14 @@ int my_navy(int argc, char const **argv, navy_t **tab)
     char **map_self = innit_map();
     char **map_enemy = innit_map();
 
-    if (argc < 2 || argc > 3) {
-        my_putstr("invalid number of parameter,\ntry ./[binary] -h\n");
-        return 84;
-    }
-    if (argc == 2 && !my_strcmp(argv[1], "-h"))
-        return print_dash_h();
     if (argc == 2) {
-        init_map(map_self, tab, argv[1]);
+        if (init_map(map_self, tab, argv[1]) == 84)
+            return 84;
         player_1(map_self, map_enemy);
     }
     if (argc == 3) {
-        init_map(map_self, tab, argv[2]);
+        if (init_map(map_self, tab, argv[2]) == 84)
+            return 84;
         player_2(map_self, map_enemy, argv[1]);
     }
     free_all(tab, map_self);
@@ -59,11 +55,18 @@ int main(int argc, char const **argv)
     struct sigaction act;
     navy_t **tab = innit_tab();
 
+    if (argc < 2 || argc > 3) {
+        my_putstr("invalid number of parameter,\ntry ./[binary] -h\n");
+        return 84;
+    }
+    if (argc == 2 && !my_strcmp(argv[1], "-h"))
+        return print_dash_h();
     act.sa_sigaction = signal_handler;
     act.sa_flags = SA_SIGINFO;
     if (sigaction(SIGUSR1, &act, NULL) < 0
         || sigaction(SIGUSR2, &act, NULL) < 0)
         return 84;
-    my_navy(argc, argv, tab);
+    if (my_navy(argc, argv, tab) == 84)
+        return 84;
     return 0;
 }

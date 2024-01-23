@@ -67,7 +67,8 @@ static int check_between_2_5(char *info, navy_t *ship)
             free_tab(individual_info);
             return 84;
         }
-        fill_struct(individual_info, ship);
+        if (fill_struct(individual_info, ship) == 84)
+            return 84;
         free_tab(individual_info);
         return 0;
     }
