@@ -31,4 +31,5 @@ int player_1(char **map_self, char **map_enemy)
             game(map_self, map_enemy);
         }
     }
+    return 1;
 }

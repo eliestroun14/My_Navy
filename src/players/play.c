@@ -20,10 +20,10 @@ int play(pos_t *coords, char **map_self, char **map_enemy)
         send_signal(coords->x, global.pid);
         send_signal(coords->y, global.pid);
         global.print_map++;
-        if (global.print_map == 2) {
-        print_map(map, map_enemy);
-        global.print_map = 0;
-    }
+        if (global.print_map >= 2) {
+            print_map(map_self, map_enemy);
+            global.print_map = 0;
+        }
     }
     return 0;
 }

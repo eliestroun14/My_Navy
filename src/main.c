@@ -25,9 +25,6 @@ int init_map(char **map, navy_t **tab, char const *argv)
     if (get_info(argv, tab) == 84)
         return 84;
     get_map(tab, map);
-    for (int i = 0; map[i] != NULL; i++) {
-        my_putstr(map[i]);
-    }
     return 0;
 }
 

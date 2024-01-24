@@ -24,7 +24,7 @@ int check_map(pos_t coords, char **map, char **map_enemy)
         return 0;
     }
     global.print_map++;
-    if (global.print_map == 2) {
+    if (global.print_map >= 2) {
         print_map(map, map_enemy);
         global.print_map = 0;
     }

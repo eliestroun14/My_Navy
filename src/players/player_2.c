@@ -26,7 +26,8 @@ int player_2(char **map_self, char **map_enemy, char const *pid)
             global.signal_value = 0;
             send_signal(PLAY, global.pid);
             my_putstr("waiting for enemy's attack...\n\n");
-            game(map_self, map_enemy);
+            game(map_self, map_enemy, 2);
         }
     }
+    return 1;
 }
