@@ -9,15 +9,16 @@
 
 int win_lose(char **map_self, char **map_enemy)
 {
-    if (global.count == 8 && global.signal_value == WIN) {
-        print_map(map_self, map_enemy);
-        my_putstr("I won\n");
-        send_signal(LOSE, global.pid);
-        return 1;
-    } else if (global.count == 8 && global.signal_value == LOSE) {
-        print_map(map_self, map_enemy);
-        my_putstr("enemy won\n");
-        return 1;
+    if (!check_win_lose(map_self, map_enemy)) {
+        if (global.victory == 1) {
+            print_map(map_self, map_enemy);
+            my_putstr("I won\n");
+            return 1;
+        } else if (global.victory == -1) {
+            print_map(map_self, map_enemy);
+            my_putstr("enemy won\n");
+            return 1;
+        }
     }
     return 0;
 }

@@ -15,6 +15,7 @@ int player_2(char **map_self, char **map_enemy, char const *pid)
 
     global.signal_value = 0;
     global.count = 0;
+    global.victory = 0;
     global.pid = my_getnbr(pid);
     my_printf("my_pid: %d\n\n", process_id);
     send_signal(P2_CONECTED, global.pid);
@@ -28,6 +29,8 @@ int player_2(char **map_self, char **map_enemy, char const *pid)
             my_putstr("waiting for enemy's attack...\n\n");
             game(map_self, map_enemy, 2);
         }
+        if (global.victory == 1 || global.victory == -1)
+            return 0;
     }
     return 1;
 }

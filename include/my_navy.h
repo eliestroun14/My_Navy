@@ -29,6 +29,7 @@ typedef struct global_value_s {
     unsigned char signal_value;
     char count;
     int pid;
+    char victory;
 } global_value_t;
 
 typedef enum SIGNAL_s {
