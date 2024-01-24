@@ -12,7 +12,7 @@ int play(pos_t *coords)
     if (global.count == 8 && global.signal_value == PLAY && !global.victory) {
         coords->x = 84;
         coords->y = 84;
-        my_putstr("attack:");
+        my_putstr("attack: ");
         global.count = 0;
         global.signal_value = 0;
         while (coords->x == 84 || coords->y == 84)

@@ -8,7 +8,7 @@
 #include "my.h"
 #include <stdio.h>
 
-int check_map(pos_t coords, char **map, char **map_enemy)
+int check_map(pos_t coords, char **map)
 {
     my_printf("result: %c%d", (coords.x + 'A' - 1), coords.y);
     if (map[coords.y - 1][coords.x - 1] != '.') {
@@ -36,10 +36,11 @@ int handle_coords(char **map, char **map_enemy, int player)
             coords_recieved.y = global.signal_value;
             global.signal_value = 0;
             global.count = 0;
-            check_map(coords_recieved, map, map_enemy);
+            check_map(coords_recieved, map);
         }
-        if (player == 1 && !global.victory)
+        if (player == 1 && !global.victory) {
             print_map(map, map_enemy);
+        }
     }
     return 0;
 }

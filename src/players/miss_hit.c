@@ -28,11 +28,13 @@ int miss_hit(pos_t *coords, char **map, char **map_enemy, int player)
     if (global.count == 8 &&
     (global.signal_value == HIT || global.signal_value == MISS)) {
         update_map(global.signal_value, *coords, map_enemy);
+        check_win_lose(map, map_enemy);
         if (player == 2 && !global.victory)
             print_map(map, map_enemy);
-        if (!global.victory)
+        if (!global.victory) {
             send_signal(PLAY, global.pid);
-        my_putstr("waiting for enemy's attack...\n\n");
+            my_putstr("waiting for enemy's attack...\n\n");
+        }
         global.count = 0;
         global.signal_value = 0;
         coords->x = 0;

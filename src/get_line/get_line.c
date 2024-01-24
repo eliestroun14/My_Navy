@@ -19,14 +19,14 @@ pos_t get_line(void)
 
     getline(&buff, &len, stdin);
     if (my_strlen(buff) != 3 || !is_char_upper(buff[0])) {
-        my_putstr("\n\nWrong position\n\n");
+        my_putstr("\nWrong position\n\nattack: ");
         return coords;
     }
     coords.x = buff[0] - 'A' + 1;
-    coords.y = my_getnbr(buff);
+    if (buff[1] >= '0' && buff[1] <= '8')
+        coords.y = my_getnbr(buff);
     if ((coords.x <= 0 || coords.x > 8) || (coords.y <= 0 || coords.y > 8)) {
-        my_putstr("\n\nWrong position\n\n");
-        my_putstr("attack :");
+        my_putstr("\nWrong position\n\nattack: ");
         coords.x = 84;
         coords.y = 84;
         return coords;

@@ -31,5 +31,5 @@ void print_map(char **map, char **map_enemy)
         my_printf("%d|", (i + 1));
         print_lines(map_enemy, i);
     }
-    my_putstr("\n\n");
+    my_putstr("\n");
 }
