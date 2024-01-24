@@ -76,22 +76,31 @@ static int check_between_2_5(char *info, navy_t *ship)
     return 84;
 }
 
+static int check_tab(navy_t **tab, int i)
+{
+        for (int j = 0; tab[j] != NULL; j++) {
+            if (tab[i]->data->len_boat == tab[j]->data->len_boat && i != j)
+                return 84;
+        }
+    return 0;
+}
+
 int get_info(char const *filepath, navy_t **tab)
 {
     char *arg = open_file(filepath);
     char **info = my_str_to_word_array(arg, "\n");
 
-    if (info == NULL)
-        return 84;
-    if (tab == NULL)
-        return 84;
-    if (is_enought_arg(info) != 4)
+    if (info == NULL || tab == NULL || is_enought_arg(info) != 4)
         return 84;
     for (int i = 0; info[i] != NULL; i++) {
         if (check_between_2_5(info[i], tab[i]) == 84) {
             free_tab(info);
             return 84;
         }
+    }
+    for (int i = 0; tab[i] != NULL; i++) {
+        if (check_tab(tab, i) == 84)
+            return 84;
     }
     free(arg);
     free_tab(info);
