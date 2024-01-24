@@ -54,6 +54,8 @@ int nb_word(char *str, char *delimiters)
     int sp = 1;
     int nb = 0;
 
+    if (str == NULL)
+        return 0;
     while (str[i] != '\0') {
         if (sp == 1 && !my_strchr(delimiters, str[i])) {
             sp = 0;
@@ -71,6 +73,8 @@ char **my_str_to_word_array(char *str, char *delimiters)
     int x = 0;
     char **tab = malloc(sizeof(char *) * (nb_word(str, delimiters) + 1));
 
+    if (str == NULL)
+        return NULL;
     while (y < nb_word(str, delimiters)) {
         tab[y] = malloc(sizeof(char) * (nb_char(str, y + 1, delimiters) + 1));
         x = 0;

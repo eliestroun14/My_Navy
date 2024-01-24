@@ -52,6 +52,8 @@ static void fill_map(navy_t *ship, char **map)
 
 int get_map(navy_t **tab, char **map)
 {
+    if (map == NULL || tab == NULL)
+        return 84;
     for (int i = 0; tab[i] != NULL; i++) {
         fill_map(tab[i], map);
     }

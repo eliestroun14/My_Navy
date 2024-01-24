@@ -47,6 +47,8 @@ static int start_is_less_than_end(navy_t *ship)
 
 int fill_struct(char **individual_info, navy_t *ship)
 {
+    if (individual_info == NULL || ship == NULL)
+        return 84;
     if (my_strlen(individual_info[0]) != 1 || my_strlen(individual_info[1])
         != 2 || my_strlen(individual_info[2]) != 2)
         return 84;

@@ -24,7 +24,8 @@ int init_map(char **map, navy_t **tab, char const *argv)
 {
     if (get_info(argv, tab) == 84)
         return 84;
-    get_map(tab, map);
+    if (get_map(tab, map) == 84)
+        return 84;
     return 0;
 }
 

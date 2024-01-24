@@ -60,7 +60,7 @@ static int check_between_2_5(char *info, navy_t *ship)
     char **individual_info = my_str_to_word_array(info, ":");
 
     if (individual_info == NULL)
-        return 0;
+        return 84;
     if (my_getnbr(individual_info[0]) >= 2 && my_getnbr(individual_info[0])
         <= 5) {
         if (is_enought_arg(individual_info) != 3) {
@@ -81,6 +81,10 @@ int get_info(char const *filepath, navy_t **tab)
     char *arg = open_file(filepath);
     char **info = my_str_to_word_array(arg, "\n");
 
+    if (info == NULL)
+        return 84;
+    if (tab == NULL)
+        return 84;
     if (is_enought_arg(info) != 4)
         return 84;
     for (int i = 0; info[i] != NULL; i++) {
