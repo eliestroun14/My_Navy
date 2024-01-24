@@ -10,6 +10,7 @@
 
 void signal_handler(int sig, siginfo_t *siginfo, void *panic)
 {
+    (void)panic;
     if (global.pid == -1)
         global.pid = siginfo->si_pid;
     if (sig == SIGUSR1) {

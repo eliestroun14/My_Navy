@@ -20,6 +20,7 @@ static int condition_win_lose(char **map_self, char **map_enemy, int player)
             my_putstr("enemy won\n");
             return 1;
         }
+    return 0;
 }
 
 int win_lose(char **map_self, char **map_enemy, int player)
