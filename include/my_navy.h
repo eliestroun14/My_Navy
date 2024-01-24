@@ -29,7 +29,6 @@ typedef struct global_value_s {
     unsigned char signal_value;
     char count;
     int pid;
-    char print_map;
 } global_value_t;
 
 typedef enum SIGNAL_s {
@@ -66,10 +65,10 @@ int get_map(navy_t **tab, char **map);
 //signal handler
 void signal_handler(int sig, siginfo_t *siginfo, void *panic);
 int send_signal(SIGNAL_e signal, int pid);
-int play(pos_t *coords, char **map_self, char **map_enemy);
-int miss_hit(pos_t *coords, char **map);
-int handle_coords(char **map, char **map_enemy);
-int game(char **map_self, char **map_enemy);
+int play(pos_t *coords);
+int miss_hit(pos_t *coords, char **map, char **map_enemy, int player);
+int handle_coords(char **map, char **map_enemy, int player);
+int game(char **map_self, char **map_enemy, int player);
 int win_lose(char **map_self, char **map_enemy);
 
 // handle players

@@ -7,7 +7,7 @@
 #include "my_navy.h"
 #include "my.h"
 
-int play(pos_t *coords, char **map_self, char **map_enemy)
+int play(pos_t *coords)
 {
     if (global.count == 8 && global.signal_value == PLAY) {
         coords->x = 84;
@@ -19,11 +19,6 @@ int play(pos_t *coords, char **map_self, char **map_enemy)
             *coords = get_line();
         send_signal(coords->x, global.pid);
         send_signal(coords->y, global.pid);
-        global.print_map++;
-        if (global.print_map >= 2) {
-            print_map(map_self, map_enemy);
-            global.print_map = 0;
-        }
     }
     return 0;
 }

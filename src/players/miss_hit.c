@@ -10,7 +10,7 @@
 
 int update_map(SIGNAL_e signal, pos_t coords, char **map)
 {
-    my_putstr("result : ");
+    my_putstr("\nresult: ");
     my_putchar((coords.x + 'A' - 1));
     my_put_nbr(coords.y);
     if (signal == HIT) {
@@ -20,21 +20,22 @@ int update_map(SIGNAL_e signal, pos_t coords, char **map)
         map[coords.y - 1][coords.x - 1] = 'o';
         my_putstr(":missed\n\n");
     }
-    send_signal(PLAY, global.pid);
-    my_putstr("waiting for enemy's attack...\n\n");
     return 0;
 }
 
-int miss_hit(pos_t *coords, char **map)
+int miss_hit(pos_t *coords, char **map, char **map_enemy, int player)
 {
     if (global.count == 8 &&
     (global.signal_value == HIT || global.signal_value == MISS)) {
-        update_map(global.signal_value, *coords, map);
+        update_map(global.signal_value, *coords, map_enemy);
+        if (player == 2)
+            print_map(map, map_enemy);
+        send_signal(PLAY, global.pid);
+        my_putstr("waiting for enemy's attack...\n\n");
         global.count = 0;
         global.signal_value = 0;
         coords->x = 0;
         coords->y = 0;
-        global.print_map++;
     }
     return 0;
 }

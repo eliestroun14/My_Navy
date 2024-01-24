@@ -23,15 +23,10 @@ int check_map(pos_t coords, char **map, char **map_enemy)
         send_signal(WIN, global.pid);
         return 0;
     }
-    global.print_map++;
-    if (global.print_map >= 2) {
-        print_map(map, map_enemy);
-        global.print_map = 0;
-    }
     return 0;
 }
 
-int handle_coords(char **map, char **map_enemy)
+int handle_coords(char **map, char **map_enemy, int player)
 {
     pos_t coords_recieved;
 
@@ -47,6 +42,8 @@ int handle_coords(char **map, char **map_enemy)
             global.count = 0;
             check_map(coords_recieved, map, map_enemy);
         }
+        if (player == 1)
+            print_map(map, map_enemy);
     }
     return 0;
 }

@@ -16,12 +16,12 @@ int player_2(char **map_self, char **map_enemy, char const *pid)
     global.signal_value = 0;
     global.count = 0;
     global.pid = my_getnbr(pid);
-    global.print_map = 1;
     my_printf("my_pid: %d\n\n", process_id);
     send_signal(P2_CONECTED, global.pid);
     while (1) {
         if (global.count == 8 && global.signal_value == P1_READY) {
             my_putstr("successfully connected\n\n");
+            print_map(map_self, map_enemy);
             global.count = 0;
             global.signal_value = 0;
             send_signal(PLAY, global.pid);

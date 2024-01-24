@@ -18,17 +18,17 @@ int player_1(char **map_self, char **map_enemy)
     global.signal_value = 0;
     global.count = 0;
     global.pid = -1;
-    global.print_map = 0;
     my_putstr("my_pid: ");
     my_put_nbr(process_id);
     my_putstr("\n\nwaiting for enemy connection...\n\n");
     while (1) {
         if (global.count == 8 && global.signal_value == P2_CONECTED) {
             my_putstr("enemy connected\n\n");
+            print_map(map_self, map_enemy);
             global.count = 0;
             global.signal_value = 0;
             send_signal(P1_READY, global.pid);
-            game(map_self, map_enemy);
+            game(map_self, map_enemy, 1);
         }
     }
     return 1;
