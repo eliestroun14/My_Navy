@@ -59,7 +59,7 @@ static int check_between_2_5(char *info, navy_t *ship)
 {
     char **individual_info = my_str_to_word_array(info, ":");
 
-    if (individual_info == NULL)
+    if (individual_info == NULL || individual_info[0] == NULL)
         return 84;
     if (my_getnbr(individual_info[0]) >= 2 && my_getnbr(individual_info[0])
         <= 5) {
