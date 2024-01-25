@@ -11,11 +11,13 @@
 int check_map(pos_t coords, char **map)
 {
     my_printf("result: %c%d", (coords.x + 'A' - 1), coords.y);
-    if (map[coords.y - 1][coords.x - 1] != '.') {
+    if (map[coords.y - 1][coords.x - 1] != '.' &&
+    map[coords.y - 1][coords.x - 1] != 'x') {
         map[coords.y - 1][coords.x - 1] = 'x';
         my_putstr(":hit\n\n");
         send_signal(HIT, global.pid);
-    } else if (map[coords.y - 1][coords.x - 1] == '.') {
+    } else if (map[coords.y - 1][coords.x - 1] == '.' ||
+    map[coords.y - 1][coords.x - 1] == 'x') {
         my_putstr(":missed\n\n");
         send_signal(MISS, global.pid);
     }
