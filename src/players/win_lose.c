@@ -26,7 +26,8 @@ static int condition_win_lose(char **map_self, char **map_enemy, int player)
 int win_lose(char **map_self, char **map_enemy, int player)
 {
     if (!check_win_lose(map_self, map_enemy)) {
-        condition_win_lose(map_self, map_enemy, player);
+        if (condition_win_lose(map_self, map_enemy, player) == 1)
+            return 1;
     }
     return 0;
 }
