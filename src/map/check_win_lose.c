@@ -29,13 +29,13 @@ int check_win_lose(char **map_self, char **map_enemy)
     int cpt = 0;
 
     check_win_lose_loop(map_self, &cpt);
-    if (cpt >= 2) {
+    if (cpt >= 14) {
         global.victory = -1;
         return 0;
     }
     cpt = 0;
     check_win_lose_loop(map_enemy, &cpt);
-    if (cpt >= 2) {
+    if (cpt >= 14) {
         global.victory = 1;
         return 0;
     }

@@ -6,6 +6,9 @@
 */
 #include "my_navy.h"
 #include "my.h"
+#include <unistd.h>
+#include <signal.h>
+#include <stdio.h>
 
 int play(pos_t *coords)
 {
