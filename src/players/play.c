@@ -18,8 +18,10 @@ int play(pos_t *coords)
         my_putstr("attack: ");
         global.count = 0;
         global.signal_value = 0;
-        while (coords->x == 84 || coords->y == 84)
+        while (coords->x == 84 || coords->y == 84) {
             *coords = get_line();
+            usleep(10000);
+        }
         usleep(10000);
         send_signal(coords->x, global.pid);
         usleep(10000);
