@@ -25,7 +25,7 @@ pos_t get_line(void)
     coords.x = buff[0] - 'A' + 1;
     if (buff[1] >= '0' && buff[1] <= '8')
         coords.y = my_getnbr(buff);
-    if ((coords.x <= 0 || coords.x > 8) || (coords.y <= 0 || coords.y > 8)) {
+    if ((coords.x <= 1 || coords.x > 8) || (coords.y <= 1 || coords.y > 8)) {
         my_putstr("\nWrong position\n\nattack: ");
         coords.x = 84;
         coords.y = 84;
