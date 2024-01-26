@@ -17,7 +17,9 @@ int play(pos_t *coords)
         global.signal_value = 0;
         while (coords->x == 84 || coords->y == 84)
             *coords = get_line();
+        usleep(10000);
         send_signal(coords->x, global.pid);
+        usleep(10000);
         send_signal(coords->y, global.pid);
     }
     return 0;
