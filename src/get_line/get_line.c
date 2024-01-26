@@ -16,8 +16,10 @@ pos_t get_line(void)
     char *buff = NULL;
     size_t len = 0;
     pos_t coords = {84, 84};
+    int t = getline(&buff, &len, stdin);
 
-    getline(&buff, &len, stdin);
+    if (t == -1)
+        return coords;
     if (my_strlen(buff) != 3 || !is_char_upper(buff[0])) {
         my_putstr("\nWrong position\n\nattack: ");
         return coords;
@@ -29,7 +31,6 @@ pos_t get_line(void)
         my_putstr("\nWrong position\n\nattack: ");
         coords.x = 84;
         coords.y = 84;
-        return coords;
     }
     return coords;
 }
